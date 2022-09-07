@@ -1,0 +1,99 @@
+1 **IPv6**
+128 비트
+인증 보안
+임의로 큰 크기 패킷
+유니캐스트, 멀티캐스트, 애니캐스트 | 멀티미디어
+IPv6 확장 헤더를 통해 네트워크 기능 확장 용이
+자동으로 네트워크 환경구성 가능
+
+**IPv4** : 64kbyte
+
+브로드캐스트
+3
+응용 계층 : HTTP FTP SMTP
+
+5 은행가 알고리즘
+회피 기법 해결
+Prevention 예방 : 교착 상태 원인 조건 하나 제거
+- 상호배제 : 임계 구역으로 불리는 코드 영역
+- 점유와 대기
+- 비선점
+- 환형대기
+Detection(탐지) : 자원 할당 그래프 
+Recovery(복구) : 자원 선점/프로세스 종료
+
+6 커널
+프로세스, 기억장치, 입출력관리
+
+8 OSI 7계층
+물리 계층 : bit, 리피터
+데이터 링크 : MAC, 브릿지, 노드간 오류 제어|흐름 제어
+네트워크 : L3 스위치 , Packet 라우터 | 
+전송계층 : 세그먼트, L4 스위치 , TCP, UDP | 종단간 신뢰성, 흐름 제어
+TCP : 양방향 연결
+UDP : 비연결성 , 실시간
+세션계층 : SSH, TLS | 관련성, 대화 제어
+표현계층 : 확장자 형태 변환
+응용계층 : 사용자가 OSI환경에 접근할 수 있도록 서비스 제공
+ARP (IP → MAC) <←→> RARP(MAC→IP)
+ICMP : IP 조합 , 통신 발생 오류 메시지
+
+11 프로세스 상태
+
+12 스레드 : 프로세스 내에서 작업단위로 여러 자원을 할당 받아 실행하는 프로그램 단위
+한 프로세스 여러 스레드
+커널 스레드 : 운영체제에 의해 스레드 운영
+사용자 스레드 : 라이브러리 사용 스레드 운영
+하드웨어 운영체제 성능 처리율 향상
+
+13 스케쥴링
+
+**비선점**
+SJF(Shortest Jop First) :  실행시간 짧은 프로세스 먼저
+HRN**(Highest Response-ratio Next)** : SJF 보완, 우선순위 계산하여 높은 것부터, 
+대기시간 긴 프로세스 우선순위 높아진다.
+(대기시간 + 서비스 시간) / 서비스 시간
+
+**선점**
+RR : 할당된 시간 만큼 시분할
+SRT(Shortest Remaining Time) : 가장 짧은 실행 시간
+
+15 C언어 변수명 불가능
+text-color
+
+16 스크립트 언어 : HTML 문서안에 직접 프로그래밍 언어 삽입
+서버 스크립트 언어/ 클라이언트 스크립트 언어
+javascript, ASP, JSP, PHP, Python, basic
+
+절차적 프로그래밍 언어
+Cobol, C, FORTRAN
+
+17 페이지 부재
+페이지 프레임 내에 참조할 페이지가 없는 경우
+
+19 응집도 (모듈내 기능적인 응집 정도)
+기능적(Functional cohesion) > 순차적(Sequential cohesion) > 교환적(Communication cohesion) >절차적(Procedural cohesion) > 시간적(Temporal cohesion) > 논리적(Logical cohesion) > 우연적(Coincidental cohesion)
+
+우논시절 통순기
+논리적 : 유사 성격이나 특정 형태 분리
+메모리 오류 발생, 잘못된 동작 하는 프로그램 취약점 : 버퍼 오버플로
+웹 루트 디렉토리 외부 공격 : 디렉토리 접근 공격
+
+9 TCP
+기본 헤더 크기는 20~60 / 옵션 값 포함시 40byte 추가 가능
+
+12 결합도
+Content 내용 - Common 공통 - External - Control - stamp - data
+common : 공유되는 데이터 영역 여러 모듈 사용
+control : 다른 모듈의 내부 논리 조직을 제어하기 위한 목적
+stamp : 모듈 간 자료구조 전달
+
+13 메모리 관리 기법
+first fit : 가장 빠른 영역
+best fit : 가장 자원 낭비가 덜 한 영역
+worst fit : 자원 낭비가 제일 심한 영역
+
+19 UNIX
+ls - 디렉토리나 파일목록
+cat - 파일 내용 출력
+chmod - 접근권한 변경
