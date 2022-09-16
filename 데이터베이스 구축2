@@ -1,0 +1,142 @@
+[3과목] 데이터베이스 구축
+용어
+
+튜플: 행
+카디널리티: 튜플의 수
+차수(Degree): 속성(애트리뷰트)의 수
+도메인: 애트리뷰트가 취할 수 있는 같은 타입의 원자 값들의 집합
+인덱스: <키 값, 포인터>, 데이터 레코드를 빠르게 접근
+트랜잭션
+하나의 논리적 기능을 수행하기 위한 작업의 단위/ 한꺼번에 모두 수행되어야 할 일련의 연산
+
+특성: Atomicity(원자성) - commit과 rollback, Consistency(일관성), Isolation(독립성, 격리성), Durability(영속성, 지속성)
+데이터베이스 무결성 규정(Integrity Rule)
+
+데이터가 만족해야할 제약조건, 식별자 등 요소 포함
+대상: 도메인, 키, 종속성
+릴레이션 무결성 규정은 릴레이션을 조작하는 과정에서의 의미적 관계를 명세
++허가x는 보안
+병행제어 기법
+
+로킹(Lock): 데이터 액세스 상호 배타적, Lock이 허락되어야만 그 로킹 단위 액세스
+
+로킹 단위(Locking Granularity)
+
+한꺼번에 로킹할 수 있는 객체의 크기
+데이터베이스, 파일, 레코드, 필드 등
+타임스탬프 순서(Time Stamp Ordering): 시간에 따라(Time Stamp) 트랜잭션 수행, 교착상태 발생x
+
+최적 병행수행(검증, 확인, 낙관적 기법): 대부분의 트랜잭션이 Read Only일 경우
+
+다중 버전: (= 다중 버전 타임 스탬프 기법)
+
+SQL
+
+DDL(데이터 정의어)
+명령어: CREATE, ALTER, DROP
+DML(데이터 조작어)
+명령어: SELECT, INSERT, DELETE, UPDATE
+DCL(데이터 제어어)
+명령어: COMMIT, ROLLBACK, GRANT, REVOKE
+
+DML 형식
+
+SELECT
+
+SELECT [DISTINCT] 속성명
+FROM 테이블명
+[WHERE 조건]
+[GROUP BY 속성명]
+[HAVING 조건]
+[ORDER BY 속성명 [ASC | DESC]];
+INSERT
+
+INSERT INTO ~ VALUES ~
+DELETE
+
+DELETE ~ FROM ~ WHERE ~
+UPDATE
+
+UPDATE ~ SET ~ WHERE ~
+명령어
+
+검색 연산 회수
+
+REVOKE SELET
+ON department
+from X1;
+DBA 데이터 갱신: GRANT 권한리스트 ON 개체 TO 사용자
+
+GRANT UPDATE ON STUDENT TO PARK;
+스키마
+
+외부 = 서브 = 사용자뷰
+개념 = 전체 뷰
+내부
+뷰(VIEW)
+
+가상 테이블
+인덱스 가질 수 없음
+논리적 독립성 제공
+뷰 위에 또 다른 뷰 정의 가능
+삽입, 갱신, 삭제 연산에 제약 있음
+DDL 명령어인 ALTER 사용 불가(ALTER은 기본 테이블 수정)
+뷰가 정의된 기본 테이블 제거 시 뷰도 자동적 제거
+관계 대수
+
+연산의 순서O(절차적 언어)
+연산들의 집합
+순수 관계 연산자
+
+단항 관계 연산
+
+SELECT: 튜플 추출, 수평 연산자
+PROJECT: 애트리뷰트 추출, 수직 연산자 +중복 튜플X
+RENAME: 재명명
+이진 관계 연산
+
+JOIN: 카테이션 곱 + SELECT (두 연산을 단일 연산으로 합침)
+DIVISION: 두 릴레이션에 대한 나눗셈
+(일반) 집합 연산자
+
+합집합(UNION)
+교집합(INTERSECT): 두 SELECT 문의 조회 결과 중 공통된 행(+애트리뷰트 명)만 출력
+차집합(DIFFERENCE)
+카테이션 곱(CARTESIAN PRODUCT)
+관계 해석
+
+연산의 순서X(비절차적 언어)
+테이블에 대한 집합
+정규화
+(암기법: 두부이걸다줘? = 도부이결다조)
+비정규
+-도메인이 원자값> 1NF
+-부분적 함수 종속 제거> 2NF
+-이행적 함수 종속 제거> 3NF
+-결정자이면서 후보키가 아닌 것 제거> BCNF
+-다치 종속 제거> 4NF
+-조인 종속성 이용> 5NF
+
+무결성 제약 조건
+
+개체 무결성(엔터티 무결성): 기본 키 - Null 값X, 중복X
+도메인 무결성: 속성이 도메인에 만족
+참조 무결성: 외래키 값은 Null, 참조 릴레이션의 기본키와 같아야 함
+사용자 정의 무결성
+데이터 모델
+
+표시 요소
+
+(논리적 데이터) 구조
+연산
+제약 조건
+--
++빈도수 낮은 내용들
+
+OLAP 연산(On-Line Analytical Processing)
+
+Roll-up: 구체적(상세) 범위 -> 추상적(요약) 범위
+Drill-Down: 추상적(요약) 범위 -> 구체적(상세) 범위
+Pivoting: 분석 데이터의 축 바꾸기
+Slicing: 다차원 배열에서 요소 선택 시 선택된 것과 관련있는 데이터 집합
+Dicing: Slicing된 데이터를 대화식 화면을 통해 분석
